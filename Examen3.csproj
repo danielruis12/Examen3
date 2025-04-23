@@ -233,6 +233,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Examen3.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\libLogin.cs" />
     <Compile Include="Models\Torneo.cs">
       <DependentUpon>Examen3.tt</DependentUpon>
     </Compile>
