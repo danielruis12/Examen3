@@ -5,7 +5,7 @@ using System.Web.Http;
 
 namespace Examen3.Controllers
 {
-    [RoutePrefix("api/login")]
+    [RoutePrefix("api/Login")]
     [AllowAnonymous]
     public class LoginController : ApiController
     {

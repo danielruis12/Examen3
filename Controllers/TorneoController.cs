@@ -13,7 +13,7 @@ namespace Examen3.Controllers
 
         [HttpGet]
         [Route("Consultar")]
-        public IHttpActionResult GetTorneos(string tipo = null, string nombre = null, string fecha = null)
+        public IHttpActionResult ConsultarTorneos(string tipo = null, string nombre = null, string fecha = null)
         {
             var torneos = dbExamen3.Torneos.AsQueryable();
 
@@ -29,7 +29,7 @@ namespace Examen3.Controllers
 
         [HttpPost]
         [Route("Registrar")]
-        public IHttpActionResult PostTorneo([FromBody] Torneo torneo)
+        public IHttpActionResult RegistrarTorneo([FromBody] Torneo torneo)
         {
             dbExamen3.Torneos.Add(torneo);
             dbExamen3.SaveChanges();
@@ -38,7 +38,7 @@ namespace Examen3.Controllers
 
         [HttpPut]
         [Route("Actualizar")]
-        public IHttpActionResult PutTorneo([FromBody] Torneo torneo)
+        public IHttpActionResult ActualizarTorneo([FromBody] Torneo torneo)
         {
             var actual = dbExamen3.Torneos.Find(torneo.idTorneos);
             if (actual == null) return NotFound();
@@ -56,13 +56,16 @@ namespace Examen3.Controllers
 
         [HttpDelete]
         [Route("Eliminar")]
-        public IHttpActionResult DeleteTorneo(int id)
+        public string Eliminar([FromBody] Torneo torneo)
         {
-            var torneo = dbExamen3.Torneos.Find(id);
-            if (torneo == null) return NotFound();
-            dbExamen3.Torneos.Remove(torneo);
+            Torneo actual = dbExamen3.Torneos.Find(torneo.idTorneos);
+            if (actual == null)
+            {
+                return "Torneo no encontrado.";
+            }
+            dbExamen3.Torneos.Remove(actual);
             dbExamen3.SaveChanges();
-            return Ok("Torneo eliminado correctamente");
+            return "Torneo eliminado correctamente.";
         }
     }
 }
