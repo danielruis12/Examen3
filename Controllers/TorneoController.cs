@@ -12,7 +12,7 @@ namespace Examen3.Controllers
         private DBExamen3Entities dbExamen3 = new DBExamen3Entities();
 
         [HttpGet]
-        [Route("")]
+        [Route("Consultar")]
         public IHttpActionResult GetTorneos(string tipo = null, string nombre = null, string fecha = null)
         {
             var torneos = dbExamen3.Torneos.AsQueryable();
